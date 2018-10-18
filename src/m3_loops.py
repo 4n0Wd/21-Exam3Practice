@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  FOR and WHILE loops.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Hanyu Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -45,7 +45,7 @@ def main():
 def run_test_practice_problem3():
     """ Tests the   practice_problem3  function. """
     ####################################################################
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  practice_problem3  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests beyond those we wrote.
     #
@@ -134,6 +134,17 @@ def run_test_practice_problem3():
     # SUGGESTION: Ask an assistant to CHECK your tests to confirm
     #             that they are adequate tests!
     ####################################################################
+    # Test 15:
+    expected = [12]
+    actual = practice_problem3(10, 1, 0.3)
+    print('Expected:', expected)
+    print('  Actual:', actual)
+
+    # Test 16:
+    expected = [6]
+    actual = practice_problem3(5, 1, 0.6)
+    print('Expected:', expected)
+    print('  Actual:', actual)
 
 
 def practice_problem3(start, n, threshold):
@@ -207,8 +218,19 @@ def practice_problem3(start, n, threshold):
       :type n:     int
       :type threshold: float
     """
+    seq = []
+    k = start
+    count = 0
+    while True:
+        if math.sin(k) + math.cos(k) > threshold:
+            seq = seq + [k]
+            count = count + 1
+        k = k + 1
+        if count == n:
+            break
+    return seq
     ####################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ####################################################################
