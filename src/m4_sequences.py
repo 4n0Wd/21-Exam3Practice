@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  SEQUENCES.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Hanyu Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -133,8 +133,14 @@ def practice_problem4a(sequence):
     Type hints:
       :type sequence: list | tuple | string
     """
+    seq = []
+    for k in range(len(sequence) - 1):
+        if sequence[k + 1] == sequence[k]:
+            seq = seq + [k]
+    return seq
+
     ####################################################################
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -196,8 +202,13 @@ def practice_problem4b(sequence):
     Type hints:
       :type sequence: (list | tuple) of (float | int)
     """
+    index = 0
+    for k in range(0, len(sequence), 2):
+        if sequence[k] > sequence[index]:
+            index = k
+    return sequence[index]
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
@@ -264,6 +275,7 @@ def run_test_practice_problem4c():
         print()
 
 
+
 def practice_problem4c(points):
     """
     What comes in:  A tuple of rg.Points, each of whose coordinates
@@ -294,8 +306,17 @@ def practice_problem4c(points):
       :type points: tuple of rg.Point
       :rtype: rg.Point | string
     """
+
+    for k in range(len(points)):
+        if is_prime(points[k].x) and is_prime(points[k].y):
+            c = points[k].x
+            points[k].x = points[k].y
+            points[k].y = c
+            return points[k]
+    return 'Not found'
+
     ####################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPORTANT: This problem is your LOWEST PRIORITY for preparing
@@ -390,8 +411,13 @@ def practice_problem4d(sequence):
       :type sequence: (list | tuple) of int
       :rtype: int
     """
+    total = 0
+    for k in range(len(sequence) - 1):
+        if is_prime(sequence[k]) and is_prime(sequence[k + 1]) and sequence[k] != sequence[k + 1]:
+            total = total + sequence[k]
+    return total
     ####################################################################
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     ####################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
