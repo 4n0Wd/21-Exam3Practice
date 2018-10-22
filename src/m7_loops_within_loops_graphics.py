@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in 2D GRAPHICS problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Hanyu Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -29,7 +29,7 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 ########################################################################
 
 import rosegraphics as rg
-
+import math
 
 def main():
     """ Calls the   TEST   functions in this module. """
@@ -88,8 +88,45 @@ def hourglass(window, n, point, radius, color):
     where n and radius are positive and color is a string that denotes
     a color that rosegraphics understands.
     """
+    ipoint = rg.Point(point.x, point.y)
+    circle = rg.Circle(point, radius)
+    circle.fill_color = color
+    circle.attach_to(window)
+    line = rg.Line(rg.Point(point.x - radius, point.y), rg.Point(point.x + radius, point.y))
+    line.attach_to(window)
+    for k in range(n - 1):
+        point = rg.Point(point.x - (2 * k + 1) * radius, point.y - math.sqrt(4 * radius ** 2 - radius ** 2))
+        circle = rg.Circle(point, radius)
+        circle.fill_color = color
+        circle.attach_to(window)
+        line = rg.Line(rg.Point(point.x - radius, point.y), rg.Point(point.x + radius, point.y))
+        line.attach_to(window)
+        for i in range(k + 1):
+            point = rg.Point(point.x + 2 * radius, point.y)
+            circle = rg.Circle(point, radius)
+            circle.fill_color = color
+            circle.attach_to(window)
+            line = rg.Line(rg.Point(point.x - radius, point.y), rg.Point(point.x + radius, point.y))
+            line.attach_to(window)
+    point = ipoint
+    for k in range(n - 1):
+        point = rg.Point(point.x - (2 * k + 1) * radius, point.y + math.sqrt(4 * radius ** 2 - radius ** 2))
+        circle = rg.Circle(point, radius)
+        circle.fill_color = color
+        circle.attach_to(window)
+        line = rg.Line(rg.Point(point.x - radius, point.y), rg.Point(point.x + radius, point.y))
+        line.attach_to(window)
+        for i in range(k + 1):
+            point = rg.Point(point.x + 2 * radius, point.y)
+            circle = rg.Circle(point, radius)
+            circle.fill_color = color
+            circle.attach_to(window)
+            line = rg.Line(rg.Point(point.x - radius, point.y), rg.Point(point.x + radius, point.y))
+            line.attach_to(window)
+    window.render()
+
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # ------------------------------------------------------------------
     ####################################################################
